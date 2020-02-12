@@ -13,3 +13,6 @@ I terminalen:
 I terminalen:
 
 - Ctrl + C
+
+## Hjelp jeg har fucket opp git/gitlab:
+- https://ohshitgit.com/
