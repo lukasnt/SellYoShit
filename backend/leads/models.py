@@ -10,4 +10,7 @@ class User(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)
 
 
-##class Ad()
+class Ad(models.Model):
+    creator_id = models.CharField(max_length=10)
+    ad_Text = models.TextField(max_length=1000)
+    ##add images e v e n t u a l l y 
