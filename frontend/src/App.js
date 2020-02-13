@@ -21,10 +21,12 @@ export default function App() {
           <Route path="/product">
             <Product
               product={{
-                title: "Sofa",
-                description: "Sofa til salgs",
+                title: "Fin og behagelig 6 seters sofa til salgs.",
+                description:
+                  "Kun noen år gammel. Mener den ble kjøpt hos Skeidar for ca 5 år siden. Den er tatt godt vare på og er ren og fin. Har ikke vært i kontakt med husdyr. Selges for min mor.",
                 image:
-                  "https://www.ikea.com/no/no/images/products/landskrona-3-seat-sofa-gunnared-dark-grey-metal__0602115_PE680184_S5.JPG?f=s"
+                  "https://www.ikea.com/no/no/images/products/landskrona-3-seat-sofa-gunnared-dark-grey-metal__0602115_PE680184_S5.JPG?f=s",
+                price: 2000
               }}
               user={{
                 name: "Ola Nordmann",
@@ -54,7 +56,7 @@ export default function App() {
         </Switch>
 
         <Box m={2}>
-          <Footer />
+          <Footer className="footer" />
         </Box>
       </div>
     </Router>
@@ -67,6 +69,7 @@ function Home({ products }) {
       <SaleItem productID={product.id} />
     </Grid>
   ));
+
   return (
     <Container maxWidth="md">
       <Grid container direction="column" alignItems="center" spacing={2}>
