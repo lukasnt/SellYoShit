@@ -7,7 +7,7 @@ import NavBar from "./components/navbar";
 import Footer from "./components/footer";
 import SearchBar from "./components/searchbar";
 import SaleItem from "./components/saleitem";
-import SignIn from "./components/singin";
+import SignIn from "./components/signin";
 
 export default function App() {
   return (
