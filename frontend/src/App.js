@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Box, Container, Grid } from "@material-ui/core";
 import "./style.css";
@@ -15,7 +15,6 @@ export default function App() {
     <Router>
       <div>
         <NavBar />
-
         <Switch>
           <Route path="/signin">
             <SignIn />
@@ -66,10 +65,31 @@ export default function App() {
   );
 }
 
-function Home({ products }) {
+// function Home({ products }) {
+function Home() {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    fetch("https://5e4d41479b6805001438fbca.mockapi.io/products")
+      .then(response => {
+        if (response.status > 400) {
+          console.log("Error: " + response.status + response.statusText);
+        }
+        return response.json();
+      })
+      .then(data => {
+        setProducts(data);
+      });
+  });
+
   var productList = products.map(product => (
     <Grid item xs={12} sm={6} md={4} lg={3}>
-      <SaleItem productID={product.id} />
+      <SaleItem
+        key={product.id}
+        productID={product.id}
+        title={product.title}
+        price={product.price}
+      />
     </Grid>
   ));
 
