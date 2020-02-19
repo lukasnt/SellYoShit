@@ -13,7 +13,7 @@ const useStyles = makeStyles({
   }
 });
 
-export default function SaleItem({ productID, title, price, callback }) {
+export default function SaleItem({ productID, title, price }) {
   const classes = useStyles();
 
   return (
