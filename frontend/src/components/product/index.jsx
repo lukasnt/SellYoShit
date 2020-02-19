@@ -19,7 +19,11 @@ export default function Product({ product, user }) {
       <Container maxWidth="md">
         <Grid container alignItems="center">
           <Grid item xs={12} md={6} className="product-image">
-            <img src={image} alt="" className="display-img" />
+            <img
+              src="https://www.ikea.com/no/no/images/products/landskrona-3-seat-sofa-gunnared-dark-grey-metal__0602115_PE680184_S5.JPG?f=s"
+              alt=""
+              className="display-img"
+            />
           </Grid>
           <Grid item xs={0} md={2}>
             {null}

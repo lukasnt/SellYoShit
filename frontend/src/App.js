@@ -11,62 +11,7 @@ import SignIn from "./components/signin";
 import Product from "./components/product";
 
 export default function App() {
-  return (
-    <Router>
-      <div>
-        <NavBar />
-        <Switch>
-          <Route path="/signin">
-            <SignIn />
-          </Route>
-          <Route path="/signup"></Route>
-          <Route path="/product">
-            <Product
-              product={{
-                title: "Fin og behagelig 6 seters sofa til salgs.",
-                description:
-                  "Kun noen år gammel. Mener den ble kjøpt hos Skeidar for ca 5 år siden. Den er tatt godt vare på og er ren og fin. Har ikke vært i kontakt med husdyr. Selges for min mor.",
-                image:
-                  "https://www.ikea.com/no/no/images/products/landskrona-3-seat-sofa-gunnared-dark-grey-metal__0602115_PE680184_S5.JPG?f=s",
-                price: 2000
-              }}
-              user={{
-                name: "Ola Nordmann",
-                telephone: "95491672",
-                email: "example@email.com"
-              }}
-            />
-          </Route>
-          <Route path="/">
-            <Home
-              // {/* This is just added to test display of saleitems */}
-              products={[
-                { id: 1 },
-                { id: 2 },
-                { id: 3 },
-                { id: 4 },
-                { id: 5 },
-                { id: 6 },
-                { id: 7 },
-                { id: 8 },
-                { id: 9 },
-                { id: 10 },
-                { id: 11 }
-              ]}
-            />
-          </Route>
-        </Switch>
-
-        <Box m={2}>
-          <Footer className="footer" />
-        </Box>
-      </div>
-    </Router>
-  );
-}
-
-// function Home({ products }) {
-function Home() {
+  const [selectedProduct, setSelectedProduct] = useState(1);
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
@@ -83,8 +28,49 @@ function Home() {
       });
   });
 
+  return (
+    <Router>
+      <div>
+        <NavBar />
+        <Switch>
+          <Route path="/signin">
+            <SignIn />
+          </Route>
+          <Route path="/signup"></Route>
+          <Route path="/product">
+            <Product
+              product={products[selectedProduct - 1]}
+              user={{
+                name: "Ola Nordmann",
+                telephone: "95491672",
+                email: "example@email.com"
+              }}
+            />
+          </Route>
+          <Route path="/">
+            <Home products={products} callback={setSelectedProduct} />
+          </Route>
+        </Switch>
+
+        <Box m={2}>
+          <Footer className="footer" />
+        </Box>
+      </div>
+    </Router>
+  );
+}
+
+// function Home({ products }) {
+function Home({ products, callback }) {
   var productList = products.map(product => (
-    <Grid item xs={12} sm={6} md={4} lg={3}>
+    <Grid
+      item
+      xs={12}
+      sm={6}
+      md={4}
+      lg={3}
+      onClick={() => callback(product.id)}
+    >
       <SaleItem
         key={product.id}
         productID={product.id}
