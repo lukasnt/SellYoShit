@@ -27,7 +27,7 @@ Forsikre deg om at databasen er oppdatert med å kjøre `python manage.py migrat
 { 
       "user" : {
 		"username": "brukernavn",
-        "email": "jostein@mail.no",
+                "email": "you@mail.yahoo",
 		"password": "passord",
 		"first_name": "Fornavn",
 		"last_name": "Etternavn"
@@ -79,7 +79,7 @@ Dersom alt gikk som det skal, får du en token og informasjon om brukeren
 { 
       "user" : {
 		"username": "brukernavn",
-        "email": "din@mail.no",
+                "email": "din@mail.no",
 		"password": "passord",
 		"first_name": "Fornavn",
 		"last_name": "Etternavn"
