@@ -8,6 +8,7 @@ import Footer from "./components/footer";
 import SearchBar from "./components/searchbar";
 import SaleItem from "./components/saleitem";
 import SignIn from "./components/signin";
+import Product from "./components/product";
 
 export default function App() {
   return (
