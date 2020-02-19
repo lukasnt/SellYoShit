@@ -70,6 +70,7 @@ function Home() {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
+    // This is just mock api, change with actual api url eventually
     fetch("https://5e4d41479b6805001438fbca.mockapi.io/products")
       .then(response => {
         if (response.status > 400) {
