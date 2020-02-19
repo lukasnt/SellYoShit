@@ -16,7 +16,7 @@ I terminalen:
 
 
 ## Hvordan starte backend
-###Første gang:
+### Første gang:
 I terminalen:
 - Kjør `pip install pipenv`
 - Kjør `pipenv shell`
@@ -24,7 +24,7 @@ I terminalen:
 - cd til "backend"
 - Kjør `python manage.py migrate`
 - Kjør `python manage.py runserver`
-###Ellers:
+### Ellers:
 - Kjør `pipenv shell`
 - Kjør `python manage.py runserver`
 ## Hvordan stoppe backend
