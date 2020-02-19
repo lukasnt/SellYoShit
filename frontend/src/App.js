@@ -38,14 +38,7 @@ export default function App() {
           </Route>
           <Route path="/signup"></Route>
           <Route path="/product">
-            <Product
-              product={products[selectedProduct - 1]}
-              user={{
-                name: "Ola Nordmann",
-                telephone: "95491672",
-                email: "example@email.com"
-              }}
-            />
+            <Product product={products[selectedProduct - 1]} />
           </Route>
           <Route path="/">
             <Home products={products} callback={setSelectedProduct} />
@@ -60,7 +53,6 @@ export default function App() {
   );
 }
 
-// function Home({ products }) {
 function Home({ products, callback }) {
   var productList = products.map(product => (
     <Grid

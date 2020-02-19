@@ -11,8 +11,8 @@ import {
 import "./style.css";
 import MessageIcon from "@material-ui/icons/Message";
 
-export default function Product({ product, user }) {
-  const { image } = product || {};
+export default function Product({ product }) {
+  const { image, user } = product || {};
   const productLoaded = true;
   return productLoaded ? (
     <div>
