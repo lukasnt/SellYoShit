@@ -59,6 +59,7 @@ export default function App() {
 function Home({ products, callback }) {
   var productList = products.map(product => (
     <Grid
+      key={product.id}
       item
       xs={12}
       sm={6}
@@ -67,7 +68,6 @@ function Home({ products, callback }) {
       onClick={() => callback(product.id)}
     >
       <SaleItem
-        key={product.id}
         productID={product.id}
         title={product.title}
         price={product.price}
