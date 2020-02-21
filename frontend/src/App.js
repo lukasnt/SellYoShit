@@ -42,7 +42,10 @@ export default function App() {
           </Route>
           <Route path="/signup"></Route>
           <Route path="/product">
-            <Product product={products[selectedProduct - 1]} />
+            <Product
+              product={products[selectedProduct - 1]}
+              isLoggedIn={isLoggedIn}
+            />
           </Route>
           <Route path="/">
             <Home products={products} callback={setSelectedProduct} />
