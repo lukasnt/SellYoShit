@@ -36,7 +36,7 @@ export default function App() {
   return (
     <Router>
       <div>
-        <NavBar />
+        <NavBar isLoggedIn={isLoggedIn} setLoggedIn={setLoggedIn} />
         <Switch>
           <Route path="/signin">
             <SignIn />
