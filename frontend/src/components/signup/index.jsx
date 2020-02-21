@@ -157,7 +157,7 @@ function signUp(setRedirect) {
     .then(res => {
       if (res.response === "error") {
         for (let message in res.message) {
-          console.log(message + " is invalid!");
+          console.log(message + " is invalid: " + res.message[message]);
         }
       } else if (res.response === "success") {
         console.log("Successfully created user");
