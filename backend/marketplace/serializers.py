@@ -3,10 +3,11 @@ from django.contrib.auth.models import User
 from rest_framework.settings import api_settings
 from .models import SaleItem
 
+
 class GetFullUserSerializer(sz.ModelSerializer):
     class Meta:
         model = User
-        fields = ('id','username','is_superuser','first_name', 'last_name')
+        fields = ('id', 'username', 'is_superuser', 'first_name', 'last_name')
 
 
 class UserSerializerWithToken(sz.ModelSerializer):
@@ -35,7 +36,9 @@ class UserSerializerWithToken(sz.ModelSerializer):
         fields = ('token', 'username', 'password', 'first_name',
                   'last_name')
 
+
 class SaleItemSerializer(sz.ModelSerializer):
     class Meta:
         model = SaleItem
-        fields = '__all__'
+        fields = ('id', 'title', 'creator_id',
+                  'description', 'creation_date')
