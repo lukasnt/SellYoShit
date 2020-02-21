@@ -8,7 +8,7 @@ class SaleItem(models.Model):
     creator = models.ForeignKey(User, on_delete=models.CASCADE)
     description = models.TextField()
     creation_date = models.DateField(auto_now=True)
-    #img = models.ImageField(upload_to='images/', null=True)
+    img = models.ImageField(upload_to='images/', null=True)
 
     def __str__(self):
         return self.title

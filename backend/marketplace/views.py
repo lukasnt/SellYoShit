@@ -34,5 +34,6 @@ class CreateUserView(APIView):
 
 
 class SaleItemView(ModelViewSet):
+    permission_classes = (permissions.AllowAny, )
     serializer_class = SaleItemSerializer
     queryset = SaleItem.objects.all()

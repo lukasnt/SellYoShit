@@ -40,5 +40,5 @@ class UserSerializerWithToken(sz.ModelSerializer):
 class SaleItemSerializer(sz.ModelSerializer):
     class Meta:
         model = SaleItem
-        fields = ('id', 'title', 'creator_id',
-                  'description', 'creation_date')
+        fields = ('id', 'title', 'creator',
+                  'description', 'creation_date', 'img')
