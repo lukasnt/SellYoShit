@@ -41,7 +41,9 @@ export default function App() {
           <Route path="/signin">
             <SignIn />
           </Route>
-          <Route path="/signup"></Route>
+          <Route path="/signup">
+            <SignUp />
+          </Route>
           <Route path="/product">
             <Product product={products[selectedProduct - 1]} />
           </Route>
