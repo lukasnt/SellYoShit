@@ -28,6 +28,9 @@ export default function App() {
       });
   });
 
+  const [isLoggedIn, setLoggedIn] = useState(
+    localStorage.getItem("token") ? true : false
+  );
   return (
     <Router>
       <div>
