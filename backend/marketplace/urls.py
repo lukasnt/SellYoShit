@@ -1,7 +1,9 @@
-from django.urls import path
+from django.urls import path, include
 from .views import *
 
 urlpatterns = [
-    path('current_user/', get_current_user),
-    path('users/create', CreateUserView.as_view()),
+    path('', include('djoser.urls')),
+    path('', include('djoser.urls.authtoken')),
+    path('restricted/', restricted)
+
 ]
