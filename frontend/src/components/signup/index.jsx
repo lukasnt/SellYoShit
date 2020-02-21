@@ -80,7 +80,7 @@ export default function SignUp() {
                 required
                 fullWidth
                 id="email"
-                label="Epost-adresse"
+                label="E-post"
                 name="email"
                 autoComplete="email"
               />
