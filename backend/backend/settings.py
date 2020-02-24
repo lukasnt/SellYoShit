@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'corsheaders',
     'marketplace',
-    'djoser'
+    'djoser',
+    'rest_framework_simplejwt'
 ]
 
 MIDDLEWARE = [
@@ -124,11 +125,15 @@ USE_TZ = True
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (
         'rest_framework.permissions.IsAuthenticated',
+        #'rest_framework.permissions.IsAdminUser'
     ),
+
     'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
         'rest_framework.authentication.TokenAuthentication',
         'rest_framework.authentication.SessionAuthentication',
         'rest_framework.authentication.BasicAuthentication',
+
     ),
 }
 
@@ -138,9 +143,9 @@ DJOSER = {
     'LOGIN_FIELD': 'email',
     'USER_CREATE_PASSWORD_RETYPE': True,
     'SERIALIZERS': {
-        #'user_create': 'marketplace.serializers.UserCreateSerializer',
-        #'user': 'marketplace.serializers.UserSerializer',
-        #'current_user': 'authentication.serializers.UserSerializer'
+        # 'user_create': 'marketplace.serializers.UserCreateSerializer',
+        # 'user': 'marketplace.serializers.UserSerializer',
+        # 'current_user': 'authentication.serializers.UserSerializer'
     },
 }
 
