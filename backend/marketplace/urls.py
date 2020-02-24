@@ -10,5 +10,5 @@ urlpatterns = [
     path('restricted/', restricted),
 
     path("all-profiles", UserProfileListCreateView.as_view(), name="all-profiles"),
-    path("profile/<int:pk>",userProfileDetailView.as_view(), name="profile"),
+    path("profile/<int:pk>", UserProfileDetailView.as_view(), name="profile"),
 ]

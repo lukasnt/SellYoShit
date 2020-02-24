@@ -6,7 +6,9 @@ from rest_framework.response import Response
 from rest_framework import status
 from .permissions import IsOwnerProfileOrReadOnly
 from .models import User
-from .serializers import UserSerializer
+# from .serializers import UserSerializer
+from djoser.serializers import UserSerializer
+
 
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
@@ -19,13 +21,9 @@ class UserProfileListCreateView(ListCreateAPIView):
     serializer_class = UserSerializer
     permission_classes = [IsAuthenticated]
 
-    def perform_create(self, serializer):
-        user = self.request.user
-        serializer.save(user=user)
 
-
-class userProfileDetailView(RetrieveUpdateDestroyAPIView):
-    queryset=User.objects.all()
+class UserProfileDetailView(RetrieveUpdateDestroyAPIView):
+    queryset = User.objects.all()
     serializer_class = UserSerializer
-    permission_classes = [IsOwnerProfileOrReadOnly,IsAuthenticated]
+    permission_classes = [IsAuthenticated]
 

@@ -23,7 +23,7 @@ Forsikre deg om at databasen er oppdatert med å kjøre `python manage.py migrat
 ## Med postman:
 -Last ned postman fra https://www.postman.com/downloads/
 #### Opprette en bruker
-- Skriv inn URL http://localhost:8000/marketplace/users/
+- Skriv inn URL http://localhost:8000/auth/users/
 - Velg "POST"
 - I "Headers" velg key = Content-Type og Value = application/json
 - I "Body" skriv 
@@ -55,7 +55,8 @@ Dersom alt gikk som det skal, får du
 Og en http melding `201 Created`
 
 #### Logge inn / lage en token
-- Skriv inn URL http://localhost:8000/marketplace/token/login/
+- Skriv inn URL http://localhost:8000/auth/jwt/create
+
 - Velg "POST"
 - I "Headers" velg key = Content-Type og Value = application/json
 - I "Body" skriv 
@@ -65,33 +66,72 @@ Og en http melding `201 Created`
 	"password": "passord"
 }
 ```
-Dersom alt gikk som det skal, får du en token
+- Dersom alt gikk som det skal, får du en refresh og en access token.
 
 ```json
 {
-    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjozLCJ1c2VybmFtZSI6Impvc3RlaWh0IiwiZXhwIjoxNTgyMTA5OTU5LCJlbWFpbCI6IiJ9.J6uuTxUnDPfMDSd-xW2AYAdImzC9OXV0_5IWogSzXco"
+    "refresh": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTU4MjY2NzEwMywianRpIjoiMDMxZDI0MjAyMDg1NGFmYTgyOGRhYTRiYTIzMWY3Y2IiLCJ1c2VyX2lkIjoxfQ.gMaUzhQ8mmHLQ5jt1MnB0jovyl77macgbU83u15w7ms",
+    "access": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTgyNTgxMDAzLCJqdGkiOiJiZjI2NjhhMWRkZTM0NDFkYjcyNDEzNDBkNjJjMTMwNiIsInVzZXJfaWQiOjF9.FAL2ZQEBXaafAyFVAJn_BRp4z2EhZ7ZIybtiHTMW-XU"
+}
+```
+- Access token varer en kort periode, og kan oppdateres ved å sende en post request til http://localhost:8000/auth/jwt/refresh
+
+- I "Headers" velg key = Content-Type og Value = application/json
+- I "Body" skriv 
+```json
+{
+	 "refresh" : "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTU4MjY2NzEwMywianRpIjoiMDMxZDI0MjAyMDg1NGFmYTgyOGRhYTRiYTIzMWY3Y2IiLCJ1c2VyX2lkIjoxfQ.gMaUzhQ8mmHLQ5jt1MnB0jovyl77macgbU83u15w7ms"
+}
+```
+- Da skal du få tilbake en ny access token
+```json
+{
+    "access": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTgyNTgxMTg5LCJqdGkiOiIzNDQ3ZWE1ZWNiY2U0OTE3ODE4ZjJjZWRkMTI5YjkyMiIsInVzZXJfaWQiOjF9.L3gEVnsLX05spHt8VX954ue4_669rg8ERleTkn9RKHM"
 }
 ```
 
-#### Logge ut / fjerne token fra databasen
-- Skriv inn URL http://localhost:8000/marketplace/token/logout/
-- I "Headers" velg key = Authorization og Value = Token  *Lim inn token* 
-- for eksempel Value = Token 5deb22977408dab3c92204bfafb2bca88c11a986
-- Send POST request
-- Nå skal Token være slettet, kan sjekke på http://127.0.0.1:8000/admin/authtoken/token/ om man er logget inn som admin (superuser) på serveren.
+### Request som krever token-autentisering:
+- De neste requestene krever at du har en gyldig token i header. Dette kan gjøres slik:
+- I authorization-parameter, velg "bearer token", og lim inn en gyldig token
+
+#### Få tak i / endre på innlogget bruker:
+- Velg url http://localhost:8000/auth/users/me/
+- Send GET request for å få tak i info om bruker, skal få tilbake dette:
+```json
+{
+    "username": "josteiht",
+    "phone": "9874565",
+    "first_name": "Jostein",
+    "last_name": "Tysse",
+    "id": 1,
+    "email": "jostein@mail.no"
+}
+```
+- For å endre på info (kan ikke endre e-mail), velg PUT-request, og skriv inn endringene du vil gjøre på samme måte som når man lager en bruker. Alle felt trenger ikke deklareres, kun username.
+
+#### Endre en annen bruker:
+
+- Velg url http://localhost:8000/api/marketplace/profile/x  , der x = id nummer på user.
+- Følg samme fremgangsmåte som i seksjonen over.
+
+#### Få tak i en liste av alle brukere:
+- Velg url http://localhost:8000/api/marketplace/all-profiles
+- Send en GET request 
+
 
 ## I nettleseren:
-#### Opprette en bruker
-- Gå til http://127.0.0.1:8000/marketplace/users/
-- Fyll inn i HTML-formen
-- Trykk POST
 
-#### Få tak i Token
-- Gå til http://127.0.0.1:8000/marketplace/token/login/
-- Skriv inn email og passord
-- Trykk POST
+- Det meste er selvforklarende når man har kommet inn på sidene.
+- Om du ikke har, lag en superuser med `python manage.py createsuperuser`
+- Logg inn på http://127.0.0.1:8000/admin/
+- Nå har vi tilgang til å se detaljer om APIen
+- http://localhost:8000/auth/users/ - Se alle brukere og lage nye brukere
+- http://localhost:8000/auth/users/me/ - Se info om innlogget bruker, og endre på brukernavn/phone/navn
+- http://localhost:8000/auth/jwt/create - Lage tokens, "logg inn" med email + passord
+- http://127.0.0.1:8000/auth/jwt/refresh - Refreshe access-token, lim inn en gyldig refresh token
+- http://localhost:8000/api/marketplace/all-profiles - Se alle brukere
+- http://127.0.0.1:8000/api/marketplace/profile/x - Se bruker nr X, endre på brukernavn/phone/navn
+ 
 
-#### Logge ut / slette token
-- Ikke sikker, bruk postman
 
 
