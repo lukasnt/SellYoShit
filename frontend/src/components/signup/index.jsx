@@ -136,7 +136,7 @@ export default function SignUp() {
         onClose={() => setOpenModal(false)}
       >
         <Alert onClose={() => setOpenModal(false)} severity="error">
-          Registrering feilet!
+          Registrering mislyktes! Prøv igjen
         </Alert>
       </Snackbar>
     </div>
