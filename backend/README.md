@@ -107,4 +107,5 @@ fields:
 Se nederst på:
 https://medium.com/@emeruchecole9/uploading-images-to-rest-api-backend-in-react-js-b931376b5833
 
-
+## Finne annonser
+URL: http://127.0.0.1:8000/api/marketplace/saleItems/
