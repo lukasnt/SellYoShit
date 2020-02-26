@@ -58,9 +58,9 @@ export default function SignIn({ setLoggedIn }) {
               margin="normal"
               required
               fullWidth
-              id="username"
-              label="Brukernavn"
-              name="username"
+              id="email"
+              label="E-post adresse"
+              name="email"
               autoComplete="off"
               autoFocus
             />
@@ -114,9 +114,10 @@ export default function SignIn({ setLoggedIn }) {
 }
 
 async function signIn(setRedirect, setLoggedIn, setOpenModal) {
-  var username = document.getElementById("username").value;
-  var password = document.getElementById("password").value;
-  const url = "http://localhost:8000/token-auth/";
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+  const url = "http://localhost:8000/auth/jwt/create";
+  var error = false;
 
   fetch(url, {
     method: "POST",
@@ -124,24 +125,26 @@ async function signIn(setRedirect, setLoggedIn, setOpenModal) {
       "Content-Type": "application/json"
     },
     body: JSON.stringify({
-      username: username,
+      email: email,
       password: password
     })
   })
     .then(res => {
       if (res.status >= 400) {
         console.log("Error");
+        error = true;
+        setOpenModal(true);
       }
       return res.json();
     })
     .then(res => {
-      if (res.token === undefined) {
-        console.log("Got no token");
-        setOpenModal(true);
-      } else {
+      if (!error) {
+        console.log("Successfully logged in!");
         localStorage.setItem("token", res.token);
         setLoggedIn(true);
         setRedirect(<Redirect to={"/"} />);
+      } else {
+        console.log(res);
       }
     });
 }
