@@ -93,4 +93,18 @@ Dersom alt gikk som det skal, får du en token og informasjon om brukeren
 - Skriv inn brukernavn og passord
 - Trykk POST
 
+## Lage annonse
+Headers: 'content-type': 'mulitpart/form-data'
+URL: http://127.0.0.1:8000/api/marketplace/saleItems/
+
+fields:
+- title
+- creator  //id
+- price
+- description
+- img     //legg til image, image.name. Kan være null
+
+Se nederst på:
+https://medium.com/@emeruchecole9/uploading-images-to-rest-api-backend-in-react-js-b931376b5833
+
 

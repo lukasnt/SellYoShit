@@ -6,6 +6,7 @@ from django.contrib.auth.models import User
 class SaleItem(models.Model):
     title = models.CharField(max_length=30)
     creator = models.ForeignKey(User, on_delete=models.CASCADE)
+    price = models.IntegerField()
     description = models.TextField()
     creation_date = models.DateField(auto_now=True)
     img = models.ImageField(upload_to='images/', null=True)

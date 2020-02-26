@@ -8,7 +8,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('token-auth/', obtain_jwt_token),
-    path('marketplace/', include('marketplace.urls'))
+    path('api/marketplace/', include('marketplace.urls'))
 ]
 
 if settings.DEBUG:
