@@ -22,7 +22,9 @@ export default function App() {
   // const url = "http://www.mocky.io/v2/5e5633d9300000660028e3b0";
   // const url = "http://www.mocky.io/v2/5e56351c300000570028e3b9?delay=300ms";
   // const url = "http://www.mocky.io/v2/5e563777300000570028e3db?delay=300ms";
-  const url = "http://www.mocky.io/v2/5e5638a0300000580028e3e6?delay=300ms";
+  // const url = "http://www.mocky.io/v2/5e5638a0300000580028e3e6?delay=300ms";
+  // const url = "http://www.mocky.io/v2/5e563cd53000000f0028e416";
+  const url = "http://www.mocky.io/v2/5e563dea300000610028e42b";
 
   useEffect(() => {
     console.log("User is logged in: " + isLoggedIn);
