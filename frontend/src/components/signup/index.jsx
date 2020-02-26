@@ -148,7 +148,8 @@ function signUp(setRedirect, setOpenModal) {
   var telephone = document.getElementById("telephone").value;
   var email = document.getElementById("email").value;
   var password = document.getElementById("password").value;
-  const url = "http://localhost:8000/marketplace/users/create";
+  const url = "http://localhost:8000/auth/users/";
+  var error = false;
 
   fetch(url, {
     method: "POST",
@@ -156,32 +157,29 @@ function signUp(setRedirect, setOpenModal) {
       "Content-Type": "application/json"
     },
     body: JSON.stringify({
-      user: {
-        username: username,
-        email: email,
-        password: password,
-        first_name: telephone,
-        last_name: telephone
-      }
+      username: username,
+      phone: telephone,
+      first_name: "F_navn",
+      last_name: "E_navn",
+      email: email,
+      password: password,
+      re_password: password
     })
   })
     .then(res => {
       if (res.status >= 400) {
         console.log("Error");
+        error = true;
+        setOpenModal(true);
       }
       return res.json();
     })
     .then(res => {
-      if (res.response === "error") {
-        for (let message in res.message) {
-          console.log(message + " is invalid: " + res.message[message]);
-          setOpenModal(true);
-        }
-      } else if (res.response === "success") {
+      if (!error) {
         console.log("Successfully created user");
         setRedirect(<Redirect to={"/signin"} />);
       } else {
-        console.log(res);
+        console.log(JSON.stringify(res));
       }
     });
 }
