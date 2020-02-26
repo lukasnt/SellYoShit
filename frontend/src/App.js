@@ -20,7 +20,9 @@ export default function App() {
   );
   // const url = "http://www.mocky.io/v2/5e5632e0300000590028e3ac";
   // const url = "http://www.mocky.io/v2/5e5633d9300000660028e3b0";
-  const url = "http://www.mocky.io/v2/5e56351c300000570028e3b9?delay=300ms";
+  // const url = "http://www.mocky.io/v2/5e56351c300000570028e3b9?delay=300ms";
+  // const url = "http://www.mocky.io/v2/5e563777300000570028e3db?delay=300ms";
+  const url = "http://www.mocky.io/v2/5e5638a0300000580028e3e6?delay=300ms";
 
   useEffect(() => {
     console.log("User is logged in: " + isLoggedIn);
@@ -81,6 +83,7 @@ function Home({ products, callback }) {
         productID={product.id}
         title={product.title}
         price={product.price}
+        image={product.img}
       />
     </Grid>
   ));
