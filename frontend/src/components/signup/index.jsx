@@ -70,7 +70,6 @@ export default function SignUp() {
               <Grid item xs={12} sm={6}>
                 <TextField
                   autoComplete="off"
-                  autocomplete="off"
                   variant="outlined"
                   required
                   fullWidth
