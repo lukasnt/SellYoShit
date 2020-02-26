@@ -28,8 +28,8 @@ export default function SaleItem({ productID, title, price }) {
           <Typography gutterBottom variant="h5" component="h2">
             {title}
           </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
-            {price}
+          <Typography variant="body2" color="primary" component="p">
+            {price},-
           </Typography>
         </CardContent>
       </CardActionArea>
