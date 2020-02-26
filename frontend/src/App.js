@@ -18,23 +18,27 @@ export default function App() {
   const [isLoggedIn, setLoggedIn] = useState(
     localStorage.getItem("token") ? true : false
   );
-  // const url = "http://www.mocky.io/v2/5e5632e0300000590028e3ac";
-  // const url = "http://www.mocky.io/v2/5e5633d9300000660028e3b0";
-  // const url = "http://www.mocky.io/v2/5e56351c300000570028e3b9?delay=300ms";
-  // const url = "http://www.mocky.io/v2/5e563777300000570028e3db?delay=300ms";
-  // const url = "http://www.mocky.io/v2/5e5638a0300000580028e3e6?delay=300ms";
-  // const url = "http://www.mocky.io/v2/5e563cd53000000f0028e416";
-  const url = "http://www.mocky.io/v2/5e563dea300000610028e42b";
+
+  // const url = "http://www.mocky.io/v2/5e563dea300000610028e42b";
+
+  // useEffect(() => {
+  //   console.log("User is logged in: " + isLoggedIn);
+  //   fetch(url)
+  //     .then(response => {
+  //       if (response.status > 400) {
+  //         console.log("Error: " + response.status + response.statusText);
+  //       }
+  //       return response.json();
+  //     })
+  //     .then(data => {
+  //       setProducts(data);
+  //     });
+  // }, []);
 
   useEffect(() => {
     console.log("User is logged in: " + isLoggedIn);
-    fetch(url)
-      .then(response => {
-        if (response.status > 400) {
-          console.log("Error: " + response.status + response.statusText);
-        }
-        return response.json();
-      })
+    fetch("/mock.json")
+      .then(res => res.json())
       .then(data => {
         setProducts(data);
       });
