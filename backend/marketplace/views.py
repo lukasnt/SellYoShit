@@ -15,7 +15,13 @@ from .models import User
 from djoser.serializers import UserSerializer
 
 
-class UserProfileDetailView(RetrieveUpdateDestroyAPIView):
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def restricted(request, *args, **kwargs):
+    return Response(data="Only for logged in User", status=status.HTTP_200_OK)
+
+
+class UserProfileListCreateView(ListCreateAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
     permission_classes = [IsAuthenticated]
@@ -25,3 +31,9 @@ class SaleItemView(ModelViewSet):
     permission_classes = (permissions.AllowAny, )
     serializer_class = SaleItemSerializer
     queryset = SaleItem.objects.all()
+
+
+class UserProfileDetailView(RetrieveUpdateDestroyAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+    permission_classes = [IsAuthenticated]

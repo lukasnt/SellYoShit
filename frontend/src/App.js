@@ -9,39 +9,57 @@ import SearchBar from "./components/searchbar";
 import SaleItem from "./components/saleitem";
 import SignIn from "./components/signin";
 import Product from "./components/product";
+import SignUp from "./components/signup";
+import Loading from "./components/loading";
 
 export default function App() {
   const [selectedProduct, setSelectedProduct] = useState(1);
   const [products, setProducts] = useState([]);
-
-  useEffect(() => {
-    // This is just mock api, change with actual api url eventually
-    fetch("https://5e4d41479b6805001438fbca.mockapi.io/products")
-      .then(response => {
-        if (response.status > 400) {
-          console.log("Error: " + response.status + response.statusText);
-        }
-        return response.json();
-      })
-      .then(data => {
-        setProducts(data);
-      });
-  });
-
   const [isLoggedIn, setLoggedIn] = useState(
     localStorage.getItem("token") ? true : false
   );
+
+  // const url = "http://www.mocky.io/v2/5e563dea300000610028e42b";
+
+  // useEffect(() => {
+  //   console.log("User is logged in: " + isLoggedIn);
+  //   fetch(url)
+  //     .then(response => {
+  //       if (response.status > 400) {
+  //         console.log("Error: " + response.status + response.statusText);
+  //       }
+  //       return response.json();
+  //     })
+  //     .then(data => {
+  //       setProducts(data);
+  //     });
+  // }, []);
+
+  useEffect(() => {
+    console.log("User is logged in: " + isLoggedIn);
+    fetch("/mock.json")
+      .then(res => res.json())
+      .then(data => {
+        setProducts(data);
+      });
+  }, []);
+
   return (
     <Router>
       <div>
-        <NavBar />
+        <NavBar isLoggedIn={isLoggedIn} setLoggedIn={setLoggedIn} />
         <Switch>
           <Route path="/signin">
-            <SignIn />
+            <SignIn setLoggedIn={setLoggedIn} />
           </Route>
-          <Route path="/signup"></Route>
+          <Route path="/signup">
+            <SignUp />
+          </Route>
           <Route path="/product">
-            <Product product={products[selectedProduct - 1]} />
+            <Product
+              product={products[selectedProduct - 1]}
+              isLoggedIn={isLoggedIn}
+            />
           </Route>
           <Route path="/">
             <Home products={products} callback={setSelectedProduct} />
@@ -59,6 +77,7 @@ export default function App() {
 function Home({ products, callback }) {
   var productList = products.map(product => (
     <Grid
+      key={product.id}
       item
       xs={12}
       sm={6}
@@ -67,15 +86,15 @@ function Home({ products, callback }) {
       onClick={() => callback(product.id)}
     >
       <SaleItem
-        key={product.id}
         productID={product.id}
         title={product.title}
         price={product.price}
+        image={product.img}
       />
     </Grid>
   ));
 
-  return (
+  return productList.length >= 1 ? (
     <Container maxWidth="md">
       <Grid container direction="column" alignItems="center" spacing={2}>
         <Grid item className="search">
@@ -87,12 +106,14 @@ function Home({ products, callback }) {
           item
           container
           spacing={4}
-          alignItems="center"
+          alignItems="flex-start"
           justify="flex-start"
         >
           {productList}
         </Grid>
       </Grid>
     </Container>
+  ) : (
+    <Loading />
   );
 }
