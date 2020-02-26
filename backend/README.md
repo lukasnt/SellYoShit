@@ -108,6 +108,7 @@ Se nederst på:
 https://medium.com/@emeruchecole9/uploading-images-to-rest-api-backend-in-react-js-b931376b5833
 
 evt. uten img:
+```json
 {
     "title": "123"
     "creator": 1
@@ -115,6 +116,20 @@ evt. uten img:
     "description": "456"
     "img": null
 }
+```
 
 ## Finne annonser
 URL: http://127.0.0.1:8000/api/marketplace/saleItems/
+
+eksempel på et entry:
+```json
+{
+    "id": 1,
+    "title": "Test",
+    "creator": 1,
+    "price": 50000,
+    "description": "Dette er en test",
+    "creation_date": "2020-02-26",
+    "img": "http://127.0.0.1:8000/media/images/Prosjekt_ER1.png"
+}
+```
