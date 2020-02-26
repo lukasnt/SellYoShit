@@ -1,3 +1,4 @@
 {
-    "editor.formatOnSave": true
+    "editor.formatOnSave": true,
+    "python.pythonPath": "C:\\Users\\sarun\\.virtualenvs\\23-X9h2KVlw\\Scripts\\python.exe"
 }
