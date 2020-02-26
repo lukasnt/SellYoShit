@@ -18,11 +18,13 @@ export default function App() {
   const [isLoggedIn, setLoggedIn] = useState(
     localStorage.getItem("token") ? true : false
   );
+  // const url = "http://www.mocky.io/v2/5e5632e0300000590028e3ac";
+  // const url = "http://www.mocky.io/v2/5e5633d9300000660028e3b0";
+  const url = "http://www.mocky.io/v2/5e56351c300000570028e3b9?delay=300ms";
 
   useEffect(() => {
     console.log("User is logged in: " + isLoggedIn);
-    // This is just mock api, change with actual api url eventually
-    fetch("https://5e4d41479b6805001438fbca.mockapi.io/products")
+    fetch(url)
       .then(response => {
         if (response.status > 400) {
           console.log("Error: " + response.status + response.statusText);
@@ -95,7 +97,7 @@ function Home({ products, callback }) {
           item
           container
           spacing={4}
-          alignItems="center"
+          alignItems="flex-start"
           justify="flex-start"
         >
           {productList}

@@ -1,0 +1,82 @@
+[
+  {
+    "id": "1",
+    "title": "Fin sofa selges rimelig",
+    "description": "Fin sofa fra IKEA. Lengde: 230 cm Dybde: 90 cm Høyde: 45 cm Sofaen er pent brukt. Må hentes på Nordstrand, Oslo.",
+    "price": "500",
+    "creation_date": "2020-02-21",
+    "img": ""
+  },
+  {
+    "id": "2",
+    "title": "Stuebord av drivved",
+    "description": "Stuebord av gamle låvematerialer. Bordet er rustikt og stemningsskapende. Bordet er satt inn med voks slik at det er lett og holde rent og rammen er av metall.",
+    "price": "5900",
+    "creation_date": "2020-02-15",
+    "img": ""
+  },
+  {
+    "id": "3",
+    "title": "Flott servise med ulike motiv",
+    "description": "6 tallerkener 1 dyp bolle En mellomstor serveringsfat En stor serveringsfat (denne har en liten hakk)",
+    "price": "500",
+    "creation_date": "2020-02-10",
+    "img": ""
+  },
+  {
+    "id": "4",
+    "title": "Rundt spisebord i eik!",
+    "description": "Her er bordet vist i 130cm diamter. Pris kr. 22.500,- + evt. tilleggsplater kr. 4000,- per stk. Bordet lages på mål, i ønskede materialer og finish. Bordet kan ha opptil 5 tilleggsplater À 50cm. Be oss gjerne om tilbud!",
+    "price": "20000",
+    "creation_date": "2020-02-12",
+    "img": ""
+  },
+  {
+    "id": "5",
+    "title": "Skrivebord for hjørne",
+    "description": "Lite praktisk skrivebord for ett lite hjørne. B: 145 D: 81 H: 76 cm. ( smal plate 48 cm dyp) Hvit / eik struktur.",
+    "price": "1995",
+    "creation_date": "2020-02-09",
+    "img": ""
+  },
+  {
+    "id": "6",
+    "title": "Antikk vitrineskap",
+    "description": "Nydelig dansk antikk vitrineskap med glassdører og tre hyller. Skapet er fra ca 1910 og har sin oprindelige farge utvendig. Er malt svart innvendig. Medfølger også nøkkel. Skaper er solid og stødig.",
+    "price": "1500",
+    "creation_date": "2020-02-18",
+    "img": ""
+  },
+  {
+    "id": "7",
+    "title": "Broderte stoler",
+    "description": "To like Rokokko-lignende elegante stoler i utskåret, brunt treverk med broderte trekk i sete og rygg. Flerfarget broderi på grå bunn.",
+    "price": "500",
+    "creation_date": "2020-02-22",
+    "img": ""
+  },
+  {
+    "id": "8",
+    "title": "Vakkert speil",
+    "description": "Sjelden mulighet! Vakkert speil fra Flamant i nydelig lysegrå farge. Har en patina som skal uttrykke at det ser gammelt ut. ",
+    "price": "3000",
+    "creation_date": "2020-02-05",
+    "img": ""
+  },
+  {
+    "id": "9",
+    "title": "Antikk vedovn",
+    "description": "Pent brukt vedovn i støpejern fra 1914, merke , Ulefoss. Høyde 105 cm. Diameter 86 cm. Passer fint på hytte.",
+    "price": "950",
+    "creation_date": "2020-02-11",
+    "img": ""
+  },
+  {
+    "id": "10",
+    "title": "Taklampe",
+    "description": "To veldig stylig tak kamera. Et par år gamle men veldig fin. Bruker vanlig lyspærer.",
+    "price": "250",
+    "creation_date": "2020-02-24",
+    "img": ""
+  }
+]
