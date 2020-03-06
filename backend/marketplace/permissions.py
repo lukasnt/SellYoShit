@@ -7,10 +7,10 @@ class IsOwnerProfileOrAdminOrReadOnly(BasePermission):
             return True
         return obj.pk == request.user.pk or request.user.is_staff
 
+
 class IsOwnerProfileOrAdminOrReadOnlyForSaleItem(BasePermission):
     def has_object_permission(self, request, view, obj):
         print(obj.creator.pk)
         if request.method in SAFE_METHODS:
             return True
         return obj.creator.pk == request.user.pk or request.user.is_staff
-
